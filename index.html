@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Mode Style</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500&family=Noto+Sans+JP:wght@100;300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo">PORTFOLIO</a>
+            <div class="nav-menu">
+                <a href="#about" class="nav-link">ABOUT</a>
+                <a href="#works" class="nav-link">WORKS</a>
+                <a href="#skills" class="nav-link">SKILLS</a>
+                <a href="#contact" class="nav-link">CONTACT</a>
+                <div class="nav-social">
+                    <a href="#" class="nav-social-link" aria-label="Instagram">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-social-link" aria-label="X">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="nav-social-link" aria-label="Facebook">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero">
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="hero-video.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">
+                <span class="title-line">CREATIVE</span>
+                <span class="title-line">PORTFOLIO</span>
+            </h1>
+            <p class="hero-subtitle">Web Designer & Developer</p>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">01</span>
+                <h2 class="section-title">ABOUT</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>私について</h3>
+                    <p>看護師をする傍ら、SUNABACOでWEBデザイン、DXを学ぶ。<br>
+                       ミニマルで洗練されたデザインを追求するWebデザイナー。
+                       モードファッションからインスピレーションを受け、無駄を削ぎ落とした美しさと機能性を両立させたWebサイトを制作。</p>
+                    <div class="about-details">
+                        <div class="detail-item">
+                            <span class="detail-label">Name</span>
+                            <span class="detail-value">Mamedaihuku</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Location</span>
+                            <span class="detail-value">Osaka, Japan</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="detail-label">Email</span>
+                            <span class="detail-value">contact@example.com</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image">
+                    <img src="./img/mamemono.jpg" alt="Profile" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="works" class="works">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">02</span>
+                <h2 class="section-title">WORKS</h2>
+            </div>
+            <div class="works-grid">
+                <article class="work-item work-item-large">
+                    <div class="work-image">
+                        <img src="./img/WOODENSTUDIO.png" alt="Project 1" />
+                        <div class="work-overlay">
+                            <span class="work-category">WEB DESIGN</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>WOODEN STUDIO</h3>
+                        <p>Furniture store website</p>
+                    </div>
+                </article>
+                <article class="work-item work-item-small">
+                    <div class="work-image">
+                        <img src="work2.jpg" alt="Project 2" />
+                        <div class="work-overlay">
+                            <span class="work-category">BRANDING</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Project Title 02</h3>
+                        <p>Fashion brand identity</p>
+                    </div>
+                </article>
+                <article class="work-item work-item-tall">
+                    <div class="work-image">
+                        <img src="./img/bakubijyo.PNG" alt="Project 3" />
+                        <div class="work-overlay">
+                            <span class="work-category">MOVIE</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Beauty Project in EBETSU</h3>
+                        <p>MOVIE</p>
+                    </div>
+                </article>
+                <article class="work-item work-item-medium">
+                    <div class="work-image">
+                        <img src="./img/Voice Chain.png" alt="Project 4" />
+                        <div class="work-overlay">
+                            <span class="work-category">APPLICATION</span>
+                        </div>
+                    </div>
+                    <div class="work-info">
+                        <h3>Voice Chain</h3>
+                        <p>Voice Order Application</p>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">03</span>
+                <h2 class="section-title">SKILLS</h2>
+            </div>
+            <div class="skills-content">
+                <div class="skill-category">
+                    <h3>WEB制作</h3>
+                    <p class="skill-description">レスポンシブで美しいWebサイトを制作します。デザインからコーディングまで一貫して対応可能です。</p>
+                    <ul class="skill-list">
+                        <li>HTML5 / CSS3</li>
+                        <li>JavaScript</li>
+                        <li>WordPress</li>
+                        <li>Figma</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>アプリ開発</h3>
+                    <p class="skill-description">使いやすいモバイルアプリやWebアプリケーションを開発します。UIデザインから実装まで手がけます。</p>
+                    <ul class="skill-list">
+                        <li>python</li>
+                        <li>Node.js</li>
+                        <li>ChatGPT</li>
+                        <li>claude</li>
+                        <li>Gemini</li>
+                    </ul>
+                </div>
+                <div class="skill-category">
+                    <h3>動画/画像編集</h3>
+                    <p class="skill-description">魅力的な動画コンテンツを制作します。企業PR動画からSNS用ショート動画まで幅広く対応します。</p>
+                    <ul class="skill-list">
+                        <li>Adobe Premiere Pro</li>
+                        <li>canva</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-number">04</span>
+                <h2 class="section-title">CONTACT</h2>
+            </div>
+            <div class="contact-content">
+                <h3>Let's work together</h3>
+                <p class="contact-text">新しいプロジェクトのご相談、お仕事のご依頼はお気軽にご連絡ください。</p>
+                <a href="mailto:contact@example.com" class="contact-email">contact@example.com</a>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Instagram">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.5"/>
+                            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="X">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" class="social-link" aria-label="Facebook">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Portfolio. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
