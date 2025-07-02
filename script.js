@@ -93,11 +93,43 @@ const observer = new IntersectionObserver((entries) => {
     });
 }, observerOptions);
 
-// Add fade-in class to elements
-document.querySelectorAll('.section-header, .about-content, .work-item, .skill-category').forEach(el => {
+// Add fade-in class to elements with direction
+document.querySelectorAll('.section-header, .about-content, .skill-category').forEach(el => {
     el.style.opacity = '0';
     el.style.transform = 'translateY(30px)';
     el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    observer.observe(el);
+});
+
+// Special animation for mamedaihuku with rotation
+document.querySelectorAll('.about-mamedaihuku').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'rotate(-10deg) translateY(30px)';
+    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    observer.observe(el);
+});
+
+// Work items with specific animations
+document.querySelectorAll('.work-item').forEach((el, index) => {
+    el.style.opacity = '0';
+    el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+    
+    // Beauty project in ebetsu と RE:BIRTH は左から
+    if (index === 0 || index === 3) {
+        el.style.transform = 'translateX(-50px)';
+        el.classList.add('from-left');
+    }
+    // WOODEN STUDIO と Blue Paint は右から
+    else if (index === 2 || index === 4) {
+        el.style.transform = 'translateX(50px)';
+        el.classList.add('from-right');
+    }
+    // Voice Chain は下から
+    else {
+        el.style.transform = 'translateY(30px)';
+        el.classList.add('from-bottom');
+    }
+    
     observer.observe(el);
 });
 
@@ -106,7 +138,18 @@ const style = document.createElement('style');
 style.textContent = `
     .fade-in {
         opacity: 1 !important;
+    }
+    .fade-in.from-left {
+        transform: translateX(0) !important;
+    }
+    .fade-in.from-right {
+        transform: translateX(0) !important;
+    }
+    .fade-in.from-bottom {
         transform: translateY(0) !important;
+    }
+    .about-mamedaihuku.fade-in {
+        transform: rotate(-10deg) translateY(0) !important;
     }
 `;
 document.head.appendChild(style);

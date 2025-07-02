@@ -12,11 +12,11 @@
     --gray-100: #eeeeee;
     --gray-50: #f8f8f8;
     
-    /* Accent Colors - Saxe Blue */
-    --accent-blue: #4A6FA5;
-    --accent-blue-light: #6B8BC4;
-    --accent-blue-dark: #3A5484;
-    --accent-blue-hover: #5A7FB5;
+    /* Accent Colors - Medium Blue (中間色) */
+    --accent-blue: #3C7AC2;
+    --accent-blue-light: #5E96DC;
+    --accent-blue-dark: #2A5896;
+    --accent-blue-hover: #4A86CE;
 }
 
 * {
@@ -110,6 +110,32 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0.2em;
     color: var(--black);
     text-decoration: none;
+    position: relative;
+    padding: 10px 20px;
+}
+
+/* Blue paintを背景に */
+.nav-logo::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%) rotate(-15deg); /* 角度をつける */
+    width: 80px;
+    height: 80px;
+    background-image: url('./img/blue paint.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.8; /* 透かし効果を0.8に */
+    z-index: -1;
+    filter: hue-rotate(20deg) saturate(0.7) brightness(0.9); /* くすみ効果 */
+    transition: filter 0.5s ease; /* スムーズな変化 */
+}
+
+/* ホバー時に鮮やかに */
+.nav-logo:hover::before {
+    filter: hue-rotate(0deg) saturate(1.2) brightness(1); /* 鮮やかに */
 }
 
 .nav-menu {
@@ -335,43 +361,80 @@ section {
     letter-spacing: 0.1em;
 }
 
-/* About Section */
+/* About Section - レスポンシブ対応 */
 @media screen and (max-width: 768px) {
-    .about-content {
-        display: block !important; /* gridとflexをリセット */
-        gap: unset;
-    }
-    
+    /* タイトル直後にmamedaihuku画像 */
     .about-mamedaihuku {
         display: block;
-        margin: 0 auto 50px; /* 大きめの余白 */
-        order: unset;
+        margin: 0 auto 50px; /* 下に大きめの余白 */
+        width: 280px;
+        transform: rotate(-10deg); /* 角度を維持 */
     }
     
-    .about-image {
-        display: block;
-        margin: 50px auto 60px; /* 上下に大きめの余白 */
-        max-width: 280px;
-        order: unset;
+    .about-content {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 50px; /* 大きめの余白 */
     }
     
+    .about-mamedaihuku img {
+        width: 100%;
+    }
+    
+    /* 1. テキスト（私について） */
     .about-text {
-        display: block;
-        margin-top: 40px;
-        order: unset;
+        order: 1;
+        margin: 0;
     }
     
     .about-text h3 {
         text-align: center;
-        margin-bottom: 40px; /* h3の下にも余白 */
+        margin-bottom: 30px;
+        font-size: 20px;
     }
     
     .about-text p {
-        margin-bottom: 30px;
+        margin-bottom: 20px;
+        text-align: left;
+        line-height: 1.8;
     }
     
+    /* テキスト全体の下に大きな余白 */
+    .about-text {
+        padding-bottom: 120px !important; /* さらに大きな余白を追加 */
+        margin-bottom: 0 !important;
+    }
+    
+    /* 2. mamemono画像（プロフィール写真） */
+    .about-image {
+        order: 2;
+        display: block;
+        margin: 80px auto 80px !important; /* 上下に80pxの余白 */
+        max-width: 250px;
+    }
+    
+    /* 3. 詳細情報（名前、住所、メール） */
     .about-details {
-        margin-top: 50px;
+        order: 3;
+        margin-top: 60px !important; /* 上に余白を追加 */
+        padding: 40px 0 20px; /* 上のパディングを増やす */
+        border-top: 1px solid var(--gray-200);
+        position: relative;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    
+    .detail-label {
+        font-size: 14px;
+    }
+    
+    .detail-value {
+        font-size: 16px;
     }
 }
 .about {
@@ -415,7 +478,8 @@ section {
 }
 
 .about-details {
-    margin-top: 50px;
+    margin-top: -480px; /* 大幅に上へ移動 */
+    position: relative; /* 位置調整のため */
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -424,6 +488,11 @@ section {
 .detail-item {
     display: flex;
     gap: 30px;
+    margin-bottom: 25px; /* 行間を追加 */
+}
+
+.detail-item:last-child {
+    margin-bottom: 0; /* 最後の項目は余白なし */
 }
 
 .detail-label {
@@ -463,16 +532,23 @@ section {
 /* Works Grid */
 .works-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-auto-rows: 400px;
+  grid-template-columns: 2fr 1.25fr 0.75fr 2fr;
+  grid-template-rows: 350px 250px 450px;
   gap: 30px;
-  grid-auto-flow: row;/*固定配置に*/
 }
 
-/* Grid Size Variants */
+/* 中間サイズのレスポンシブ対応 */
+@media screen and (max-width: 1200px) {
+    .works-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: auto;
+    }
+}
+
+/* Grid Size Variants - ブロークングリッド */
 .work-item-large {
   grid-column: span 2;
-  grid-row: span 3;
+  grid-row: span 2;
 }
 
 .work-item-wide {
@@ -483,6 +559,14 @@ section {
   grid-row: span 2;
 }
 
+.work-item-tall .work-image {
+  max-height: calc(100% - 100px); /* テキスト分のスペースを確保 */
+}
+
+.work-item-large .work-image {
+  max-height: calc(100% - 80px); /* 大きいアイテムもテキスト分のスペースを確保 */
+}
+
 .work-item-medium,
 .work-item-small,
 .work-item-square {
@@ -490,51 +574,55 @@ section {
   grid-row: span 1;
 }
 
+/* Empty space for layout */
+.work-item-empty {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
 /* Work Item Base */
 .work-item {
-  cursor: pointer;
-  transition: all 0.3s ease;
   position: relative;
-  overflow: visible;
-  z-index: 0;
-  height: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center; /* 中央配置 */
 }
 
 /* Hover: float up */
+/*
 .work-item:hover {
   transform: translateY(-10px);
   z-index: 1;
 }
+*/
 
 /* Image Container */
 .work-image {
-  height: 300px;
-  /*background-color: transparent; /* ← フチ削除 */
+  width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* 画像を下揃えに */
   justify-content: center;
-  overflow: hidden;
-  position: relative;
+  padding: 20px 20px 4px; /* 下に4pxの余白 */
+  position: relative; /* オーバーレイのための相対位置 */
 }
 
 /* Image Style */
 .work-image img {
-  max-height: 100%;
   max-width: 100%;
+  max-height: 100%;
   object-fit: contain;
-  display: block;
-  transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease;
-  filter: grayscale(100%);
-  transform: scale(1);
+  filter: grayscale(100%); /* デフォルトでモノクロ */
+  transition: filter 0.5s ease, transform 0.5s ease, box-shadow 0.5s ease; /* スムーズな変化 */
+  transform: translateZ(0); /* GPUアクセラレーション */
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0); /* 初期状態は影なし */
 }
 
 /* Hover Effect */
-.work-item:hover .work-image img {
-  filter: grayscale(0%);
-  transform: scale(1.08);
-  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.3);
+.work-image:hover img {
+  filter: grayscale(0%); /* ホバー時にカラー */
+  transform: translateY(-10px) scale(1.05); /* そっと前に出てくる */
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2); /* 画像に影を追加 */
+  cursor: pointer;
 }
 
 /* Overlay Category */
@@ -544,55 +632,48 @@ section {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
   pointer-events: none;
-}
-
-.work-item:hover .work-overlay {
-  opacity: 1;
+  transition: opacity 0.5s ease; /* フェードアウト用 */
 }
 
 .work-category {
-  color: var(--accent-blue-light);
+  color: var(--white);
+  background: rgba(74, 111, 165, 0.9); /* Saxe Blueの半透明背景 */
   font-family: 'Oswald', sans-serif;
-  font-size: 14.4px;
+  font-size: 12px;
   font-weight: 300;
   letter-spacing: 0.2em;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  padding: 8px 20px;
+  border-radius: 20px;
+  text-transform: uppercase;
+}
+
+/* ホバー時にカテゴリラベルを消す */
+.work-image:hover .work-overlay {
+  opacity: 0;
 }
 
 /* Text Info */
 .work-info {
-  margin-top: 20px;
+  padding: 0 20px 20px;
+  text-align: center;
+  flex-shrink: 0;
+  margin-top: 0; /* 画像に密接 */
 }
 
 .work-info h3 {
-  font-size: 20.8px;
+  font-size: 16px;
   font-weight: 400;
-  margin-bottom: 10px;
-  color: var(--text-color);
-  transition: color 0.3s ease;
+  margin-bottom: 3px;
+  color: var(--gray-900);
 }
 
 .work-info p {
-  font-size: 14.4px;
-  color: var(--accent-blue);
-  opacity: 0.8;
-  transition: color 0.3s ease, opacity 0.3s ease;
-}
-
-.work-item:hover .work-info h3 {
-  color: var(--white);
-}
-
-.work-item:hover .work-info p {
-  color: var(--accent-blue-light);
-  opacity: 1;
+  font-size: 13px;
+  color: var(--gray-600);
 }
 
 
@@ -709,8 +790,8 @@ section {
 
 .social-link:hover {
     color: var(--white);
-    background-color: var(--accent-blue);
-    border-color: var(--accent-blue);
+    background-color: #4A6FA5; /* Saxe Blue */
+    border-color: #4A6FA5; /* Saxe Blue */
     transform: translateY(-3px);
 }
 
@@ -739,22 +820,42 @@ section {
     }
 
     .works-grid {
-        grid-template-columns: repeat(2, 1fr);
-        grid-auto-rows: 250px;
+        grid-template-columns: 1fr 1fr !important;
+        grid-template-rows: auto !important;
         gap: 20px;
     }
 
-    .work-item-large {
-        grid-column: span 2;
-        grid-row: span 1;
+    /* すべてのアイテムをリセット */
+    .work-item {
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        width: auto !important;
+        height: 300px !important;
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+    
+    /* WOODEN STUDIOを最初に表示 */
+    .work-item:nth-child(2) { /* WOODEN STUDIO */
+        order: 1;
+    }
+    .work-item:nth-child(1) { /* Beauty Project */
+        order: 2;
+    }
+    .work-item:nth-child(3) { /* Voice Chain */
+        order: 3;
+    }
+    .work-item:nth-child(4) { /* RE:BIRTH */
+        order: 4;
+    }
+    .work-item:nth-child(5) { /* Blue Paint */
+        order: 5;
     }
 
-    .work-item-wide {
-        grid-column: span 2;
-    }
-
-    .work-item-tall {
-        grid-row: span 1;
+    .work-image {
+        height: calc(100% - 60px) !important;
     }
 
     .skills-content {
@@ -790,19 +891,76 @@ section {
     }
 
     .works-grid {
-        grid-template-columns: 1fr;
-        grid-auto-rows: 300px;
-        gap: 20px;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 30px;
     }
 
-    .work-item-large,
-    .work-item-wide,
-    .work-item-tall,
-    .work-item-medium,
-    .work-item-small,
-    .work-item-square {
-        grid-column: span 1;
-        grid-row: span 1;
+    /* モバイルでのアイテムサイズ調整 */
+    .work-item {
+        height: 400px !important;
+        position: relative !important;
+        left: 0 !important;
+        top: 0 !important;
+        transform: none !important;
+        width: 100% !important;
+    }
+    
+    /* WOODEN STUDIOを最初に表示 - article要素の順番で指定 */
+    .works-grid article:nth-child(3) { /* WOODEN STUDIO (3番目のarticle) */
+        order: 1;
+    }
+    .works-grid article:nth-child(1) { /* Beauty Project (1番目のarticle) */
+        order: 2;
+    }
+    .works-grid article:nth-child(2) { /* Voice Chain (2番目のarticle) */
+        order: 3;
+    }
+    .works-grid article:nth-child(4) { /* RE:BIRTH (4番目のarticle) */
+        order: 4;
+    }
+    .works-grid article:nth-child(5) { /* Blue Paint (5番目のarticle) */
+        order: 5;
+    }
+
+    .work-image {
+        padding: 15px 15px 4px !important;
+    }
+
+    /* カテゴリーラベルのサイズ調整 */
+    .work-category {
+        font-size: 10px;
+        padding: 6px 16px;
+    }
+    
+    /* 画像コンテナの相対位置を確保 */
+    .work-image {
+        position: relative !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    /* オーバーレイを画像コンテナ内で中央に配置 */
+    .work-overlay {
+        position: absolute !important;
+        top: 50% !important;
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        width: auto !important;
+        height: auto !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+    /* テキストサイズ調整 */
+    .work-info h3 {
+        font-size: 14px;
+    }
+
+    .work-info p {
+        font-size: 12px;
     }
 
     .contact-email {
@@ -810,7 +968,8 @@ section {
     }
 
     .social-links {
-        flex-direction: column;
-        gap: 20px;
+        flex-direction: row;
+        gap: 30px;
+        justify-content: center;
     }
 }

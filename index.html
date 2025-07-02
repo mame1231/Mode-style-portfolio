@@ -70,30 +70,30 @@
             </div>
             <div class="about-mamedaihuku">
                 <img src="./img/mamedaihuku.png" alt="Profile-mame" />
-                </div>
-                <div class="about-content">
+            </div>
+            <div class="about-content">
                 <div class="about-text">
                     <h3>私について</h3>
                     <p>看護師をする傍ら、SUNABACOでWEBデザイン、DXを学ぶ。<br>
                        ミニマルで洗練されたデザインを追求するWebデザイナー。
                        モードファッションからインスピレーションを受け、無駄を削ぎ落とした美しさと機能性を両立させたWebサイトを制作。</p>
-                    <div class="about-details">
-                        <div class="detail-item">
-                            <span class="detail-label">Name</span>
-                            <span class="detail-value">Mamedaihuku</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Location</span>
-                            <span class="detail-value">Osaka, Japan</span>
-                        </div>
-                        <div class="detail-item">
-                            <span class="detail-label">Email</span>
-                            <span class="detail-value">contact@example.com</span>
-                        </div>
-                    </div>
                 </div>
                 <div class="about-image">
                     <img src="./img/mamemono.jpg" alt="Profile" />
+                </div>
+                <div class="about-details">
+                    <div class="detail-item">
+                        <span class="detail-label">Name</span>
+                        <span class="detail-value">Mamedaihuku</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Location</span>
+                        <span class="detail-value">Osaka, Japan</span>
+                    </div>
+                    <div class="detail-item">
+                        <span class="detail-label">Email</span>
+                        <span class="detail-value">contact@example.com</span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -107,36 +107,8 @@
       <h2 class="section-title">WORKS</h2>
     </div>
     <div class="works-grid">
-      <!-- WORK ITEM LARGE -->
-      <article class="work-item work-item-large">
-        <div class="work-image">
-          <img src="./img/WOODENSTUDIO.png" alt="WOODEN STUDIO" />
-          <div class="work-overlay">
-            <span class="work-category">WEB DESIGN</span>
-          </div>
-        </div>
-        <div class="work-info">
-          <h3>WOODEN STUDIO</h3>
-          <p>Furniture store website</p>
-        </div>
-      </article>
-
-      <!-- WORK ITEM SMALL -->
-      <article class="work-item work-item-small">
-        <div class="work-image">
-          <img src="./img/Voice Chain.png" alt="Voice Chain" />
-          <div class="work-overlay">
-            <span class="work-category">APPLICATION</span>
-          </div>
-        </div>
-        <div class="work-info">
-          <h3>Voice Chain</h3>
-          <p>Voice Order Application</p>
-        </div>
-      </article>
-
-      <!-- WORK ITEM TALL -->
-      <article class="work-item work-item-tall">
+      <!-- Beauty Project - 左上に配置、固定サイズ -->
+      <article class="work-item" style="grid-column: 1; grid-row: 1 / 3; width: 550px; height: 600px;">
         <div class="work-image">
           <img src="./img/Beauty ptoject.jpg" alt="Beauty Project" />
           <div class="work-overlay">
@@ -149,8 +121,36 @@
         </div>
       </article>
 
-      <!-- WORK ITEM MEDIUM -->
-      <article class="work-item work-item-medium">
+      <!-- Voice Chain - 下の行に配置、右に50px・下に100px移動 -->
+      <article class="work-item" style="grid-column: 2; grid-row: 2; position: relative; left: 50px; top: 100px;">
+        <div class="work-image">
+          <img src="./img/Voice Chain.png" alt="Voice Chain" />
+          <div class="work-overlay">
+            <span class="work-category">APPLICATION</span>
+          </div>
+        </div>
+        <div class="work-info">
+          <h3>Voice Chain</h3>
+          <p>Voice Order Application</p>
+        </div>
+      </article>
+
+      <!-- WOODEN STUDIO - 右に横長で配置、上に200px・左に250px移動 -->
+      <article class="work-item" style="grid-column: 3 / 5; grid-row: 1 / 3; position: relative; top: -200px; left: -250px;">
+        <div class="work-image">
+          <img src="./img/WOODENSTUDIO.png" alt="WOODEN STUDIO" />
+          <div class="work-overlay">
+            <span class="work-category">WEB DESIGN</span>
+          </div>
+        </div>
+        <div class="work-info">
+          <h3>WOODEN STUDIO</h3>
+          <p>Furniture store website</p>
+        </div>
+      </article>
+
+      <!-- RE:BIRTH - 固定サイズで3行目、左に450px・下に100px移動 -->
+      <article class="work-item" style="grid-column: 2 / 4; grid-row: 3; position: relative; left: -450px; top: 100px; width: 600px; height: 500px;">
         <div class="work-image">
           <img src="./img/re-birth.jpg" alt="RE:BIRTH" />
           <div class="work-overlay">
@@ -160,6 +160,20 @@
         <div class="work-info">
           <h3>RE:BIRTH</h3>
           <p>Promotional Banner</p>
+        </div>
+      </article>
+
+      <!-- Blue Paint - 固定サイズで3行目、左に250px・下に50px移動 -->
+      <article class="work-item" style="grid-column: 4; grid-row: 3; width: 400px; height: 500px; position: relative; left: -250px; top: 50px;">
+        <div class="work-image">
+          <img src="./img/color.jpg" alt="Blue Paint" />
+          <div class="work-overlay">
+            <span class="work-category">DESIGN</span>
+          </div>
+        </div>
+        <div class="work-info">
+          <h3>Paint</h3>
+          <p>Graphic Design</p>
         </div>
       </article>
     </div>
