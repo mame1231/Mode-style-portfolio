@@ -373,8 +373,10 @@ section {
     .about-mamedaihuku {
         display: block;
         margin: 0 auto 50px; /* 下に大きめの余白 */
-        width: 280px;
+        width: 100%;
+        max-width: 280px;
         transform: rotate(-10deg); /* 角度を維持 */
+        overflow: visible; /* 回転時の見切れを防ぐ */
     }
     
     .about-content {
@@ -385,6 +387,8 @@ section {
     
     .about-mamedaihuku img {
         width: 100%;
+        height: auto;
+        display: block;
     }
     
     /* 1. テキスト（私について） */
