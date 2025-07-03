@@ -74,6 +74,15 @@ menuToggle.addEventListener('click', () => {
     navMenu.classList.toggle('active');
 });
 
+// メニュー内のリンクをクリックしたら閉じる
+const mobileNavLinks = document.querySelectorAll('.nav-menu .nav-link');
+mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+    });
+});
+
 // Smooth Scrolling
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
