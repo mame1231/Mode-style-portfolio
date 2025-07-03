@@ -137,6 +137,18 @@ document.querySelectorAll('.section-header, .about-content, .skill-category').fo
     observer.observe(el);
 });
 
+// ページ読み込み時に既に画面内にある要素にもアニメーションを適用
+window.addEventListener('load', () => {
+    setTimeout(() => {
+        document.querySelectorAll('.section-header').forEach(el => {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('fade-in');
+            }
+        });
+    }, 500);
+});
+
 // Special animation for mamedaihuku with rotation
 document.querySelectorAll('.about-mamedaihuku').forEach(el => {
     el.style.opacity = '0';
@@ -174,6 +186,7 @@ const style = document.createElement('style');
 style.textContent = `
     .fade-in {
         opacity: 1 !important;
+        transform: translateY(0) !important;
     }
     .fade-in.from-left {
         transform: translateX(0) !important;
@@ -196,6 +209,12 @@ const titleLines = heroTitle.querySelectorAll('.title-line');
 
 // フォントが読み込まれてからアニメーションを開始
 document.fonts.ready.then(() => {
+    // ナビゲーションロゴを表示
+    const navLogo = document.querySelector('.nav-logo');
+    if (navLogo) {
+        navLogo.style.opacity = '1';
+    }
+    
     titleLines.forEach((line, index) => {
         line.style.opacity = '0';
         line.style.transform = 'translateY(100%)';
@@ -318,4 +337,39 @@ window.addEventListener('load', () => {
         document.body.style.transition = 'opacity 1s ease';
         document.body.style.opacity = '1';
     }, 100);
+});
+
+// レスポンシブ時のWORKSスクロールアニメーション
+function setupMobileWorkAnimation() {
+    if (window.innerWidth <= 768) {
+        const workItems = document.querySelectorAll('.work-item');
+        
+        const observerOptions = {
+            threshold: 0.5, // 画像の50%が画面に入ったら
+            rootMargin: '0px'
+        };
+        
+        const workObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                } else {
+                    // 画面から外れたら元に戻す
+                    entry.target.classList.remove('in-view');
+                }
+            });
+        }, observerOptions);
+        
+        workItems.forEach(item => {
+            workObserver.observe(item);
+        });
+    }
+}
+
+// 初期化
+setupMobileWorkAnimation();
+
+// リサイズ時にも再実行
+window.addEventListener('resize', () => {
+    setupMobileWorkAnimation();
 });
