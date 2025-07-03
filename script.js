@@ -158,15 +158,18 @@ document.head.appendChild(style);
 const heroTitle = document.querySelector('.hero-title');
 const titleLines = heroTitle.querySelectorAll('.title-line');
 
-titleLines.forEach((line, index) => {
-    line.style.opacity = '0';
-    line.style.transform = 'translateY(100%)';
-    line.style.transition = 'opacity 1s ease, transform 1s ease';
-    
-    setTimeout(() => {
-        line.style.opacity = '1';
-        line.style.transform = 'translateY(0)';
-    }, 300 * (index + 1));
+// フォントが読み込まれてからアニメーションを開始
+document.fonts.ready.then(() => {
+    titleLines.forEach((line, index) => {
+        line.style.opacity = '0';
+        line.style.transform = 'translateY(100%)';
+        line.style.transition = 'opacity 1s ease, transform 1s ease';
+        
+        setTimeout(() => {
+            line.style.opacity = '1';
+            line.style.transform = 'translateY(0)';
+        }, 300 * (index + 1));
+    });
 });
 
 // Hero Subtitle Animation
