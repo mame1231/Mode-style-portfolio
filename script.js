@@ -2,15 +2,29 @@
 const cursor = document.querySelector('.cursor');
 const cursorFollower = document.querySelector('.cursor-follower');
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-    
-    setTimeout(() => {
-        cursorFollower.style.left = e.clientX - 15 + 'px';
-        cursorFollower.style.top = e.clientY - 15 + 'px';
-    }, 100);
-});
+// タッチデバイスかどうかを検出
+const isTouchDevice = () => {
+    return (('ontouchstart' in window) ||
+        (navigator.maxTouchPoints > 0) ||
+        (navigator.msMaxTouchPoints > 0));
+};
+
+// タッチデバイスまたは画面幅が1024px以下の場合はカーソルを非表示
+if (isTouchDevice() || window.innerWidth <= 1024) {
+    if (cursor) cursor.style.display = 'none';
+    if (cursorFollower) cursorFollower.style.display = 'none';
+    document.body.style.cursor = 'auto';
+} else {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+        
+        setTimeout(() => {
+            cursorFollower.style.left = e.clientX - 15 + 'px';
+            cursorFollower.style.top = e.clientY - 15 + 'px';
+        }, 100);
+    });
+}
 
 document.addEventListener('mousedown', () => {
     cursor.style.transform = 'scale(0.8)';
@@ -20,6 +34,19 @@ document.addEventListener('mousedown', () => {
 document.addEventListener('mouseup', () => {
     cursor.style.transform = 'scale(1)';
     cursorFollower.style.transform = 'scale(1)';
+});
+
+// ウィンドウリサイズ時にカーソルの表示/非表示を切り替え
+window.addEventListener('resize', () => {
+    if (isTouchDevice() || window.innerWidth <= 1024) {
+        if (cursor) cursor.style.display = 'none';
+        if (cursorFollower) cursorFollower.style.display = 'none';
+        document.body.style.cursor = 'auto';
+    } else {
+        if (cursor) cursor.style.display = 'block';
+        if (cursorFollower) cursorFollower.style.display = 'block';
+        document.body.style.cursor = 'none';
+    }
 });
 
 // Hover effect for links

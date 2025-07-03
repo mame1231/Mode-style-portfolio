@@ -817,6 +817,20 @@ section {
     letter-spacing: 0.1em;
 }
 
+/* Hide custom cursor on touch devices and smaller screens */
+@media screen and (max-width: 1024px) {
+    /* カスタムカーソルを非表示 */
+    .cursor,
+    .cursor-follower {
+        display: none !important;
+    }
+    
+    /* デフォルトカーソルに戻す */
+    body {
+        cursor: auto !important;
+    }
+}
+
 /* Responsive Design */
 @media screen and (max-width: 1024px) {
     .container {
